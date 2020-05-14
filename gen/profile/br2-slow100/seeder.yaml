@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: seeder
+  namespace: br2-slow100
+  labels:
+    app: seeder
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: seeder
+  template:
+    metadata:
+      labels:
+        app: seeder
+    spec:
+      containers:
+      - name: seeder
+        image: ko://github.com/yolocs/ce-test-actor/cmd/seeder
+        env:
+        - name: TARGET
+          value: http://broker-ingress.cloud-run-events.svc.cluster.local/br2-slow100/testbroker
+        - name: INTERVAL
+          value: 5m

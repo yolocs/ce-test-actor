@@ -1,0 +1,3100 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-0
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-0
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-0
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-1
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-1
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-1
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-2
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-2
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-2
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-3
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-3
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-3
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-4
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-4
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-4
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-5
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-5
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-5
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-6
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-6
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-6
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-7
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-7
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-7
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-8
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-8
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-8
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-9
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-9
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-9
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-10
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-10
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-10
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-11
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-11
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-11
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-12
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-12
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-12
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-13
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-13
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-13
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-14
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-14
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-14
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-15
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-15
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-15
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-16
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-16
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-16
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-17
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-17
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-17
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-18
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-18
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-18
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-19
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-19
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-19
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-20
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-20
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-20
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-21
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-21
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-21
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-22
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-22
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-22
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-23
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-23
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-23
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-24
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-24
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-24
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-25
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-25
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-25
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-26
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-26
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-26
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-27
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-27
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-27
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-28
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-28
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-28
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-29
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-29
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-29
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-30
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-30
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-30
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-31
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-31
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-31
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-32
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-32
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-32
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-33
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-33
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-33
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-34
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-34
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-34
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-35
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-35
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-35
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-36
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-36
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-36
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-37
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-37
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-37
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-38
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-38
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-38
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-39
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-39
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-39
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-40
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-40
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-40
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-41
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-41
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-41
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-42
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-42
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-42
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-43
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-43
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-43
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-44
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-44
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-44
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-45
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-45
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-45
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-46
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-46
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-46
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-47
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-47
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-47
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-48
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-48
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-48
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-49
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-49
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-49
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-50
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-50
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-50
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-51
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-51
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-51
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-52
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-52
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-52
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-53
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-53
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-53
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-54
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-54
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-54
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-55
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-55
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-55
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-56
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-56
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-56
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-57
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-57
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-57
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-58
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-58
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-58
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-59
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-59
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-59
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-60
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-60
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-60
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-61
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-61
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-61
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-62
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-62
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-62
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-63
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-63
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-63
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-64
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-64
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-64
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-65
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-65
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-65
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-66
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-66
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-66
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-67
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-67
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-67
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-68
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-68
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-68
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-69
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-69
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-69
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-70
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-70
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-70
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-71
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-71
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-71
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-72
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-72
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-72
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-73
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-73
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-73
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-74
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-74
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-74
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-75
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-75
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-75
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-76
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-76
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-76
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-77
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-77
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-77
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-78
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-78
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-78
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-79
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-79
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-79
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-80
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-80
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-80
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-81
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-81
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-81
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-82
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-82
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-82
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-83
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-83
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-83
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-84
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-84
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-84
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-85
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-85
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-85
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-86
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-86
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-86
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-87
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-87
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-87
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-88
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-88
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-88
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-89
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-89
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-89
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-90
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-90
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-90
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-91
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-91
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-91
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-92
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-92
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-92
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-93
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-93
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-93
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-94
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-94
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-94
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-95
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-95
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-95
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-96
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-96
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-96
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-97
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-97
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-97
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-98
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-98
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-98
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-99
+  namespace: br3-err100
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-99
+  namespace: br3-err100
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-99
+---
+

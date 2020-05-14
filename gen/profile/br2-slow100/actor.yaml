@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: actor
+  namespace: br2-slow100
+  labels:
+    app: actor
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: actor
+  template:
+    metadata:
+      labels:
+        app: actor
+    spec:
+      containers:
+      - name: actor
+        image: ko://github.com/yolocs/ce-test-actor/cmd/actor
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DELAY_HOSTS
+          value: "*"
+        - name: DELAY
+          value: 15m
+
