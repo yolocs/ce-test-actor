@@ -83,7 +83,9 @@ func (p *reqPrinter) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	log.Infof("Received raw headers: %v", req.Header)
 
 	if p.errs.include(req.Host) {
-		http.Error(w, fmt.Sprintf("Injected error for host %q", req.Host), http.StatusBadRequest)
+		w.Header().Set("content-type", "text/plain")
+		w.WriteHeader(http.StatusBadRequest)
+		w.Write([]byte(fmt.Sprintf("Injected error for host %q", req.Host)))
 		return
 	}
 

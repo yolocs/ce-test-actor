@@ -47,6 +47,7 @@ func main() {
 		e.SetType("seed")
 		e.SetSubject("tick")
 		e.SetTime(time.Now())
+		e.SetData("text/plain", "ticking")
 
 		for k, v := range ext {
 			e.SetExtension(k, v)

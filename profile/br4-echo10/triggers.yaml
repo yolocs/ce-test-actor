@@ -1,0 +1,310 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-0
+  namespace: br4-echo10
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-0
+  namespace: br4-echo10
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-0
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-1
+  namespace: br4-echo10
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-1
+  namespace: br4-echo10
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-1
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-2
+  namespace: br4-echo10
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-2
+  namespace: br4-echo10
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-2
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-3
+  namespace: br4-echo10
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-3
+  namespace: br4-echo10
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-3
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-4
+  namespace: br4-echo10
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-4
+  namespace: br4-echo10
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-4
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-5
+  namespace: br4-echo10
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-5
+  namespace: br4-echo10
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-5
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-6
+  namespace: br4-echo10
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-6
+  namespace: br4-echo10
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-6
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-7
+  namespace: br4-echo10
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-7
+  namespace: br4-echo10
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-7
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-8
+  namespace: br4-echo10
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-8
+  namespace: br4-echo10
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-8
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: actor-9
+  namespace: br4-echo10
+spec:
+  selector:
+    app: actor
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+      name: http
+---
+apiVersion: eventing.knative.dev/v1beta1
+kind: Trigger
+metadata:
+  name: trigger-actor-9
+  namespace: br4-echo10
+spec:
+  broker: testbroker
+  filter:
+    attributes:
+      type: seed
+  subscriber:
+    ref:
+     apiVersion: v1
+     kind: Service
+     name: actor-9
+---
+
