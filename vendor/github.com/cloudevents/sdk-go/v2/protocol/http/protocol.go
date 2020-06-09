@@ -120,7 +120,7 @@ func (p *Protocol) Request(ctx context.Context, m binding.Message) (binding.Mess
 	}
 	resp, err := p.Client.Do(req)
 	if err != nil {
-		return nil, protocol.NewReceipt(false, "%w", err)
+		return nil, protocol.NewReceipt(false, "%v", err)
 	}
 
 	var result protocol.Result

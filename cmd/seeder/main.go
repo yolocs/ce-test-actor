@@ -47,17 +47,27 @@ func main() {
 		e.SetType("seed")
 		e.SetSubject("tick")
 		e.SetTime(time.Now())
-		e.SetData("text/plain", "ticking")
+		// e.SetData("text/plain", "ticking")
 
 		for k, v := range ext {
 			e.SetExtension(k, v)
 		}
 
-		ret := client.Send(cecontext.WithTarget(context.Background(), env.Target), e)
+		// ret := client.Send(cecontext.WithTarget(context.Background(), env.Target), e)
+		// if protocol.IsACK(ret) {
+		// 	log.Infof("Successfully seeded event (id=%s) to target %q", e.ID(), env.Target)
+		// } else {
+		// 	log.Errorf("Failed to seed event (id=%s) to target %q: %v", e.ID(), env.Target, ret)
+		// }
+
+		resp, ret := client.Request(cecontext.WithTarget(context.Background(), env.Target), e)
 		if protocol.IsACK(ret) {
 			log.Infof("Successfully seeded event (id=%s) to target %q", e.ID(), env.Target)
+			if resp != nil {
+				log.Infof("Event replied: %v", *resp)
+			}
 		} else {
-			log.Errorf("Failed to seed event (id=%s) to target %q: %v", e.ID(), env.Target, ret)
+			log.Errorf("Failed to seed event (id=%s) to target %q: %v", e.ID(), env.Target, ret.Error())
 		}
 
 		log.Infof("Sleeping...")
