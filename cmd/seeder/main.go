@@ -15,9 +15,10 @@ import (
 )
 
 type config struct {
-	Target     string        `envconfig:"TARGET"`
-	Interval   time.Duration `envconfig:"INTERVAL"`
-	Extensions string        `envconfig:"EXTENSIONS"`
+	Target      string        `envconfig:"TARGET"`
+	Interval    time.Duration `envconfig:"INTERVAL"`
+	Concurrency int           `envconfig:"CONCURRENCY" default:"1"`
+	Extensions  string        `envconfig:"EXTENSIONS"`
 }
 
 func main() {
@@ -53,21 +54,18 @@ func main() {
 			e.SetExtension(k, v)
 		}
 
-		// ret := client.Send(cecontext.WithTarget(context.Background(), env.Target), e)
-		// if protocol.IsACK(ret) {
-		// 	log.Infof("Successfully seeded event (id=%s) to target %q", e.ID(), env.Target)
-		// } else {
-		// 	log.Errorf("Failed to seed event (id=%s) to target %q: %v", e.ID(), env.Target, ret)
-		// }
-
-		resp, ret := client.Request(cecontext.WithTarget(context.Background(), env.Target), e)
-		if protocol.IsACK(ret) {
-			log.Infof("Successfully seeded event (id=%s) to target %q", e.ID(), env.Target)
-			if resp != nil {
-				log.Infof("Event replied: %v", *resp)
-			}
-		} else {
-			log.Errorf("Failed to seed event (id=%s) to target %q: %v", e.ID(), env.Target, ret.Error())
+		for i := 0; i < env.Concurrency; i++ {
+			go func() {
+				resp, ret := client.Request(cecontext.WithTarget(context.Background(), env.Target), e)
+				if protocol.IsACK(ret) {
+					log.Infof("Successfully seeded event (id=%s) to target %q", e.ID(), env.Target)
+					if resp != nil {
+						log.Infof("Event replied: %v", *resp)
+					}
+				} else {
+					log.Errorf("Failed to seed event (id=%s) to target %q: %v", e.ID(), env.Target, ret.Error())
+				}
+			}()
 		}
 
 		log.Infof("Sleeping...")

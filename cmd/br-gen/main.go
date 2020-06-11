@@ -19,44 +19,68 @@ metadata:
     "eventing.knative.dev/broker.class": "googlecloud"
 `
 
-const actorTemplate = `apiVersion: apps/v1
+// const actorTemplate = `apiVersion: apps/v1
+// kind: Deployment
+// metadata:
+//   name: actor
+//   namespace: {{.namespace}}
+//   labels:
+//     app: actor
+// spec:
+//   replicas: 3
+//   selector:
+//     matchLabels:
+//       app: actor
+//   template:
+//     metadata:
+//       labels:
+//         app: actor
+//     spec:
+//       containers:
+//       - name: actor
+//         image: ko://github.com/yolocs/ce-test-actor/cmd/actor
+//         ports:
+//         - containerPort: 8080
+//         env:
+// {{.envs}}
+// `
+
+const envTemplate = `        - name: {{.envname}}
+          value: {{.envvalue}}
+`
+
+const trTemplate = `apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: actor
+  name: actor-{{.index}}
   namespace: {{.namespace}}
   labels:
-    app: actor
+    app: actor-{{.index}}
 spec:
   replicas: 3
   selector:
     matchLabels:
-      app: actor
+      app: actor-{{.index}}
   template:
     metadata:
       labels:
-        app: actor
+        app: actor-{{.index}}
     spec:
       containers:
       - name: actor
         image: ko://github.com/yolocs/ce-test-actor/cmd/actor
         ports:
         - containerPort: 8080
-        env:
 {{.envs}}
-`
-
-const envTemplate = `        - name: {{.envname}}
-          value: {{.envvalue}}
-`
-
-const trTemplate = `apiVersion: v1
+---
+apiVersion: v1
 kind: Service
 metadata:
   name: actor-{{.index}}
   namespace: {{.namespace}}
 spec:
   selector:
-    app: actor
+    app: actor-{{.index}}
   ports:
     - protocol: TCP
       port: 80
@@ -104,7 +128,7 @@ spec:
         image: ko://github.com/yolocs/ce-test-actor/cmd/seeder
         env:
         - name: TARGET
-          value: http://broker-ingress.cloud-run-events.svc.cluster.local/{{.namespace}}/testbroker
+          value: http://default-brokercell-ingress.cloud-run-events.svc.cluster.local/{{.namespace}}/testbroker
         - name: INTERVAL
           value: {{.interval}}
 `
@@ -124,7 +148,7 @@ func main() {
 
 	br := strings.ReplaceAll(brTemplate, "{{.namespace}}", *ns)
 
-	actor := strings.ReplaceAll(actorTemplate, "{{.namespace}}", *ns)
+	// actor := strings.ReplaceAll(actorTemplate, "{{.namespace}}", *ns)
 	envs := ""
 	if *fail {
 		env := strings.ReplaceAll(envTemplate, "{{.envname}}", "ERR_HOSTS")
@@ -145,12 +169,18 @@ func main() {
 		env = strings.ReplaceAll(env, "{{.envvalue}}", `"*"`)
 		envs += env
 	}
-	actor = strings.ReplaceAll(actor, "{{.envs}}", envs)
+	// actor = strings.ReplaceAll(actor, "{{.envs}}", envs)
 
 	triggers := ""
 	for i := 0; i < *count; i++ {
 		tr := strings.ReplaceAll(trTemplate, "{{.namespace}}", *ns)
 		tr = strings.ReplaceAll(tr, "{{.index}}", strconv.Itoa(i))
+		if envs != "" {
+			envs = "        env:\n" + envs
+			tr = strings.ReplaceAll(tr, "{{.envs}}", envs)
+		} else {
+			tr = strings.ReplaceAll(tr, "{{.envs}}", "")
+		}
 		triggers += tr
 	}
 
@@ -161,10 +191,10 @@ func main() {
 		log.Println(err)
 		os.Exit(1)
 	}
-	if err := ioutil.WriteFile(filepath.Join(*output, "actor.yaml"), []byte(actor), 0644); err != nil {
-		log.Println(err)
-		os.Exit(1)
-	}
+	// if err := ioutil.WriteFile(filepath.Join(*output, "actor.yaml"), []byte(actor), 0644); err != nil {
+	// 	log.Println(err)
+	// 	os.Exit(1)
+	// }
 	if err := ioutil.WriteFile(filepath.Join(*output, "triggers.yaml"), []byte(triggers), 0644); err != nil {
 		log.Println(err)
 		os.Exit(1)
