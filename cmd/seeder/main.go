@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"math/rand"
 	"strings"
 	"time"
 
@@ -19,6 +20,7 @@ type config struct {
 	Interval    time.Duration `envconfig:"INTERVAL"`
 	Concurrency int           `envconfig:"CONCURRENCY" default:"1"`
 	Extensions  string        `envconfig:"EXTENSIONS"`
+	Size        int64         `envconfig:"SIZE" default:"0"`
 }
 
 func main() {
@@ -41,6 +43,9 @@ func main() {
 		}
 	}
 
+	data := make([]byte, env.Size)
+	rand.Read(data)
+
 	for {
 		e := event.New()
 		e.SetID(uuid.New().String())
@@ -48,7 +53,9 @@ func main() {
 		e.SetType("seed")
 		e.SetSubject("tick")
 		e.SetTime(time.Now())
-		// e.SetData("text/plain", "ticking")
+		if env.Size > 0 {
+			e.SetData("application/octet-stream", data)
+		}
 
 		for k, v := range ext {
 			e.SetExtension(k, v)
