@@ -2,6 +2,7 @@ package main
 
 import (
 	"flag"
+	"fmt"
 	"io/ioutil"
 	"log"
 	"os"
@@ -16,7 +17,7 @@ metadata:
   name: testbroker
   namespace: {{.namespace}}
   annotations:
-    "eventing.knative.dev/broker.class": "googlecloud"
+    "eventing.knative.dev/broker.class": "{{.brclass}}"
 `
 
 // const actorTemplate = `apiVersion: apps/v1
@@ -131,6 +132,8 @@ spec:
           value: http://default-brokercell-ingress.cloud-run-events.svc.cluster.local/{{.namespace}}/testbroker
         - name: INTERVAL
           value: {{.interval}}
+        - name: SIZE
+          value: {{.size}}
 `
 
 var (
@@ -138,30 +141,37 @@ var (
 	ns           = flag.String("ns", "default", "Namesapce")
 	count        = flag.Int("count", 100, "The number of triggers to create")
 	echo         = flag.Bool("echo", false, "Echo all requests")
-	fail         = flag.Bool("fail", false, "Fail all requests")
-	slow         = flag.Bool("slow", false, "Timeout all requests")
+	fail         = flag.Int("fail", 0, "Fail requests with the given error rate")
+	slow         = flag.String("slow", "15m", "Delay for all requests")
 	seedInternal = flag.String("interval", "5s", "Seed interval")
+	size         = flag.Int64("size", 0, "The size of the event payload")
+	brClass      = flag.String("brclass", "googlecloud", "The broker class")
 )
 
 func main() {
 	flag.Parse()
 
 	br := strings.ReplaceAll(brTemplate, "{{.namespace}}", *ns)
+	br = strings.ReplaceAll(br, "{{.brclass}}", *brClass)
 
 	// actor := strings.ReplaceAll(actorTemplate, "{{.namespace}}", *ns)
 	envs := ""
-	if *fail {
-		env := strings.ReplaceAll(envTemplate, "{{.envname}}", "ERR_HOSTS")
-		env = strings.ReplaceAll(env, "{{.envvalue}}", `"*"`)
-		envs += env
+	if *fail > 0 {
+		env1 := strings.ReplaceAll(envTemplate, "{{.envname}}", "ERR_HOSTS")
+		env1 = strings.ReplaceAll(env1, "{{.envvalue}}", `"*"`)
+		envs += env1
+
+		env2 := strings.ReplaceAll(envTemplate, "{{.envname}}", "ERR_RATE")
+		env2 = strings.ReplaceAll(env2, "{{.envvalue}}", fmt.Sprintf(`"%d"`, *fail))
+		envs += env2
 	}
-	if *slow {
+	if *slow != "" {
 		env1 := strings.ReplaceAll(envTemplate, "{{.envname}}", "DELAY_HOSTS")
 		env1 = strings.ReplaceAll(env1, "{{.envvalue}}", `"*"`)
 		envs += env1
 
 		env2 := strings.ReplaceAll(envTemplate, "{{.envname}}", "DELAY")
-		env2 = strings.ReplaceAll(env2, "{{.envvalue}}", "15m")
+		env2 = strings.ReplaceAll(env2, "{{.envvalue}}", *slow)
 		envs += env2
 	}
 	if *echo {
@@ -186,6 +196,7 @@ func main() {
 
 	seeder := strings.ReplaceAll(seederTemplate, "{{.namespace}}", *ns)
 	seeder = strings.ReplaceAll(seeder, "{{.interval}}", *seedInternal)
+	seeder = strings.ReplaceAll(seeder, "{{.size}}", fmt.Sprintf("%d", *size))
 
 	if err := ioutil.WriteFile(filepath.Join(*output, "broker.yaml"), []byte(br), 0644); err != nil {
 		log.Println(err)

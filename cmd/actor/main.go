@@ -3,6 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
+	"math/rand"
 	"net/http"
 	"strings"
 	"time"
@@ -19,6 +20,7 @@ type config struct {
 	DelayHosts string        `envconfig:"DELAY_HOSTS"`
 	EchoHosts  string        `envconfig:"ECHO_HOSTS"`
 	ErrHosts   string        `envconfig:"ERR_HOSTS"`
+	ErrRate    int           `envconfig:"ERR_RATE"`
 }
 
 func main() {
@@ -33,11 +35,12 @@ func main() {
 
 	p, err := cloudevents.NewHTTP(cloudevents.WithMiddleware(func(next http.Handler) http.Handler {
 		return &reqPrinter{
-			next:   next,
-			delay:  env.Delay,
-			delays: delays,
-			errs:   errs,
-			echos:  echos,
+			next:    next,
+			delay:   env.Delay,
+			delays:  delays,
+			errs:    errs,
+			echos:   echos,
+			errRate: env.ErrRate,
 		}
 	}))
 	if err != nil {
@@ -76,6 +79,15 @@ type reqPrinter struct {
 	next                http.Handler
 	delay               time.Duration
 	errs, delays, echos *matchHosts
+	errRate             int
+}
+
+func (p *reqPrinter) diceErr() bool {
+	if p.errRate <= 0 && p.errRate > 100 {
+		return true
+	}
+	r := rand.Int31n(100)
+	return int(r) < p.errRate
 }
 
 func (p *reqPrinter) ServeHTTP(w http.ResponseWriter, req *http.Request) {
@@ -83,10 +95,12 @@ func (p *reqPrinter) ServeHTTP(w http.ResponseWriter, req *http.Request) {
 	log.Infof("Received raw headers: %v", req.Header)
 
 	if p.errs.include(req.Host) {
-		w.Header().Set("content-type", "text/plain")
-		w.WriteHeader(http.StatusBadRequest)
-		w.Write([]byte(fmt.Sprintf("Injected error for host %q", req.Host)))
-		return
+		if p.diceErr() {
+			w.Header().Set("content-type", "text/plain")
+			w.WriteHeader(http.StatusBadRequest)
+			w.Write([]byte(fmt.Sprintf("Injected error for host %q", req.Host)))
+			return
+		}
 	}
 
 	if p.delays.include(req.Host) {

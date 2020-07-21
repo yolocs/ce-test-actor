@@ -20,7 +20,7 @@ type config struct {
 	Interval    time.Duration `envconfig:"INTERVAL"`
 	Concurrency int           `envconfig:"CONCURRENCY" default:"1"`
 	Extensions  string        `envconfig:"EXTENSIONS"`
-	Size        int64         `envconfig:"SIZE" default:"0"`
+	Size        int64         `envconfig:"SIZE" default:"100"`
 }
 
 func main() {
