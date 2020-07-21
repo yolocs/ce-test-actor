@@ -58,7 +58,7 @@ metadata:
   labels:
     app: actor-{{.index}}
 spec:
-  replicas: 3
+  replicas: 1
   selector:
     matchLabels:
       app: actor-{{.index}}
@@ -142,9 +142,9 @@ var (
 	count        = flag.Int("count", 100, "The number of triggers to create")
 	echo         = flag.Bool("echo", false, "Echo all requests")
 	fail         = flag.Int("fail", 0, "Fail requests with the given error rate")
-	slow         = flag.String("slow", "15m", "Delay for all requests")
-	seedInternal = flag.String("interval", "5s", "Seed interval")
-	size         = flag.Int64("size", 0, "The size of the event payload")
+	slow         = flag.String("slow", "", "Delay for all requests")
+	seedInternal = flag.String("interval", "1s", "Seed interval")
+	size         = flag.Int64("size", 100, "The size of the event payload")
 	brClass      = flag.String("brclass", "googlecloud", "The broker class")
 )
 
