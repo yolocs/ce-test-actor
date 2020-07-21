@@ -1,7 +1,0 @@
-apiVersion: eventing.knative.dev/v1beta1
-kind: Broker
-metadata:
-  name: testbroker
-  namespace: br4-echo10
-  annotations:
-    "eventing.knative.dev/broker.class": "googlecloud"
