@@ -11,6 +11,11 @@ import (
 	"strings"
 )
 
+const nsTemplate = `apiVersion: v1
+kind: Namespace
+metadata:
+  name: {{.namespace}}`
+
 const brTemplate = `apiVersion: eventing.knative.dev/v1beta1
 kind: Broker
 metadata:
@@ -151,6 +156,8 @@ var (
 func main() {
 	flag.Parse()
 
+	namespace := strings.ReplaceAll(nsTemplate, "{{.namespace}}", *ns)
+
 	br := strings.ReplaceAll(brTemplate, "{{.namespace}}", *ns)
 	br = strings.ReplaceAll(br, "{{.brclass}}", *brClass)
 
@@ -198,7 +205,12 @@ func main() {
 	seeder = strings.ReplaceAll(seeder, "{{.interval}}", *seedInternal)
 	seeder = strings.ReplaceAll(seeder, "{{.size}}", fmt.Sprintf("%d", *size))
 
-	if err := ioutil.WriteFile(filepath.Join(*output, "broker.yaml"), []byte(br), 0644); err != nil {
+	if err := ioutil.WriteFile(filepath.Join(*output, "00-namespace.yaml"), []byte(namespace), 0644); err != nil {
+		log.Println(err)
+		os.Exit(1)
+	}
+
+	if err := ioutil.WriteFile(filepath.Join(*output, "01-broker.yaml"), []byte(br), 0644); err != nil {
 		log.Println(err)
 		os.Exit(1)
 	}
@@ -206,11 +218,11 @@ func main() {
 	// 	log.Println(err)
 	// 	os.Exit(1)
 	// }
-	if err := ioutil.WriteFile(filepath.Join(*output, "triggers.yaml"), []byte(triggers), 0644); err != nil {
+	if err := ioutil.WriteFile(filepath.Join(*output, "02-triggers.yaml"), []byte(triggers), 0644); err != nil {
 		log.Println(err)
 		os.Exit(1)
 	}
-	if err := ioutil.WriteFile(filepath.Join(*output, "seeder.yaml"), []byte(seeder), 0644); err != nil {
+	if err := ioutil.WriteFile(filepath.Join(*output, "03-seeder.yaml"), []byte(seeder), 0644); err != nil {
 		log.Println(err)
 		os.Exit(1)
 	}
