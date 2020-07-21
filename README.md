@@ -11,6 +11,8 @@ DELAY_HOSTS=default-broker.default.svc.cluster.local,other.example.com
 ECHO_HOSTS=default-broker.default.svc.cluster.local,other.example.com
 # (Optional) Set this env to always respond error for these hosts; use "*" to match all hosts.
 ERR_HOSTS=default-broker.default.svc.cluster.local,other.example.com
+# (Optional) Set this env to response with a certain error rate. ERR_HOST must be set first.
+ERR_RATE=50
 ./actor
 ```
 
@@ -25,11 +27,13 @@ INTERVAL=1s
 CONCURRENCY=10
 # (Optional) Set this env to add additional events extensions.
 EXTENSIONS=foo:bar;abc:def
+# (Optional) Set event payload size (in # of bytes).
+SIZE=1000000
 ./seeder
 ```
 
 The `br-gen` helps generate yamls for a test "suite". It generates 1 broker yaml, 1 seeder yaml and 1 triggers yaml. Check out [main.go](./cmd/br-gen/main.go) for flags.
 
 ```bash
-./br-gen -output=/home/loadtest -ns=loadtest -slow -interval=5m -count=150
+./br-gen -output=/home/loadtest -ns=loadtest -slow=15m -interval=5s -count=150
 ```
