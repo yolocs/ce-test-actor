@@ -16,8 +16,8 @@ index d0c160fd..3ecb58d1 100644
  
 +	if err := profiler.Start(profiler.Config{
 +		Service:        "broker-fanout",
-+		ServiceVersion: "0.1",             // change your version
-+		ProjectID:      "my-test-project", // optional on GCP
++		ServiceVersion: "0.1",                  // change your version
++		ProjectID:      "{{.my-test-project}}", // optional on GCP
 +		DebugLogging:   true,
 +	}); err != nil {
 +		logger.Fatalf("Cannot start the profiler", zap.Error(err))
@@ -45,8 +45,8 @@ index 50101403..328320cb 100644
 +
 +	if err := profiler.Start(profiler.Config{
 +		Service:        "broker-ingress",
-+		ServiceVersion: "0.1",             // change your version
-+		ProjectID:      "my-test-project", // optional on GCP
++		ServiceVersion: "0.1",                  // change your version
++		ProjectID:      "{{.my-test-project}}", // optional on GCP
 +		DebugLogging:   true,
 +	}); err != nil {
 +		logger.Fatalf("Cannot start the profiler", zap.Error(err))
@@ -73,8 +73,8 @@ index 86c8e5d6..44cb70db 100644
  
 +	if err := profiler.Start(profiler.Config{
 +		Service:        "broker-retry",
-+		ServiceVersion: "0.1",             // change your version
-+		ProjectID:      "my-test-project", // optional on GCP
++		ServiceVersion: "0.1",                  // change your version
++		ProjectID:      "{{.my-test-project}}", // optional on GCP
 +		DebugLogging:   true,
 +	}); err != nil {
 +		logger.Fatalf("Cannot start the profiler", zap.Error(err))

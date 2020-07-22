@@ -6,6 +6,8 @@ KN_GCP_DIR="$GOPATH/src/github.com/google/knative-gcp"
 # Copy patch to knative-gcp
 cp "$BASEDIR/broker.patch" "$KN_GCP_DIR"
 
+sed "s/{{.my-test-project}}/$PROJECT/" "$BASEDIR/broker.patch" > "$KN_GCP_DIR/broker.patch"
+
 # Change working dir
 pushd "$KN_GCP_DIR"
 
