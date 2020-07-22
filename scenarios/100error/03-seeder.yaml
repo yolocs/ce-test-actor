@@ -24,4 +24,4 @@ spec:
         - name: INTERVAL
           value: 1s
         - name: SIZE
-          value: 100
+          value: "100"

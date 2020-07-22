@@ -114,7 +114,7 @@ spec:
         - name: INTERVAL
           value: {{.interval}}
         - name: SIZE
-          value: {{.size}}
+          value: "{{.size}}"
 `
 
 var (

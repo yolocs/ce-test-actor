@@ -24,4 +24,4 @@ spec:
         - name: INTERVAL
           value: 1s
         - name: SIZE
-          value: 2000000
+          value: "2000000"
