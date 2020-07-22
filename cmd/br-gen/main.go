@@ -33,7 +33,7 @@ metadata:
   labels:
     app: actor
 spec:
-  replicas: 10
+  replicas: {{.replicas}}
   selector:
     matchLabels:
       app: actor
@@ -118,15 +118,16 @@ spec:
 `
 
 var (
-	output       = flag.String("output", "", "Output path")
-	ns           = flag.String("ns", "default", "Namesapce")
-	count        = flag.Int("count", 100, "The number of triggers to create")
-	echo         = flag.Bool("echo", false, "Echo all requests")
-	fail         = flag.Int("fail", 0, "Fail requests with the given error rate")
-	slow         = flag.String("slow", "", "Delay for all requests")
-	seedInternal = flag.String("interval", "1s", "Seed interval")
-	size         = flag.Int64("size", 100, "The size of the event payload")
-	brClass      = flag.String("brclass", "googlecloud", "The broker class")
+	output        = flag.String("output", "", "Output path")
+	ns            = flag.String("ns", "default", "Namesapce")
+	count         = flag.Int("count", 100, "The number of triggers to create")
+	echo          = flag.Bool("echo", false, "Echo all requests")
+	fail          = flag.Int("fail", 0, "Fail requests with the given error rate")
+	slow          = flag.String("slow", "", "Delay for all requests")
+	seedInternal  = flag.String("interval", "1s", "Seed interval")
+	size          = flag.Int64("size", 100, "The size of the event payload")
+	brClass       = flag.String("brclass", "googlecloud", "The broker class")
+	actorReplicas = flag.Int("actors", 10, "The number of actor replicas")
 )
 
 func main() {
@@ -138,6 +139,7 @@ func main() {
 	br = strings.ReplaceAll(br, "{{.brclass}}", *brClass)
 
 	actor := strings.ReplaceAll(actorTemplate, "{{.namespace}}", *ns)
+	actor = strings.ReplaceAll(actor, "{{.replicas}}", strconv.Itoa(*actorReplicas))
 	envs := ""
 	if *fail > 0 {
 		env1 := strings.ReplaceAll(envTemplate, "{{.envname}}", "ERR_HOSTS")

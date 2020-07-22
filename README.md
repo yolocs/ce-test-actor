@@ -35,5 +35,5 @@ SIZE=1000000
 The `br-gen` helps generate yamls for a test "suite". It generates 1 broker yaml, 1 seeder yaml and 1 triggers yaml. Check out [main.go](./cmd/br-gen/main.go) for flags.
 
 ```bash
-./br-gen -output=/home/loadtest -ns=loadtest -slow=15m -interval=5s -count=150
+./br-gen -output=/home/loadtest -ns=loadtest -slow=15m -interval=5s -count=150 -actors=20
 ```
