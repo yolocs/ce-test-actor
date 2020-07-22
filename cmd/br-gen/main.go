@@ -25,68 +25,44 @@ metadata:
     "eventing.knative.dev/broker.class": "{{.brclass}}"
 `
 
-// const actorTemplate = `apiVersion: apps/v1
-// kind: Deployment
-// metadata:
-//   name: actor
-//   namespace: {{.namespace}}
-//   labels:
-//     app: actor
-// spec:
-//   replicas: 3
-//   selector:
-//     matchLabels:
-//       app: actor
-//   template:
-//     metadata:
-//       labels:
-//         app: actor
-//     spec:
-//       containers:
-//       - name: actor
-//         image: ko://github.com/yolocs/ce-test-actor/cmd/actor
-//         ports:
-//         - containerPort: 8080
-//         env:
-// {{.envs}}
-// `
-
-const envTemplate = `        - name: {{.envname}}
-          value: {{.envvalue}}
-`
-
-const trTemplate = `apiVersion: apps/v1
+const actorTemplate = `apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: actor-{{.index}}
+  name: actor
   namespace: {{.namespace}}
   labels:
-    app: actor-{{.index}}
+    app: actor
 spec:
-  replicas: 1
+  replicas: 10
   selector:
     matchLabels:
-      app: actor-{{.index}}
+      app: actor
   template:
     metadata:
       labels:
-        app: actor-{{.index}}
+        app: actor
     spec:
       containers:
       - name: actor
         image: ko://github.com/yolocs/ce-test-actor/cmd/actor
         ports:
         - containerPort: 8080
+        env:
 {{.envs}}
----
-apiVersion: v1
+`
+
+const envTemplate = `        - name: {{.envname}}
+          value: {{.envvalue}}
+`
+
+const trTemplate = `apiVersion: v1
 kind: Service
 metadata:
   name: actor-{{.index}}
   namespace: {{.namespace}}
 spec:
   selector:
-    app: actor-{{.index}}
+    app: actor
   ports:
     - protocol: TCP
       port: 80
@@ -161,7 +137,7 @@ func main() {
 	br := strings.ReplaceAll(brTemplate, "{{.namespace}}", *ns)
 	br = strings.ReplaceAll(br, "{{.brclass}}", *brClass)
 
-	// actor := strings.ReplaceAll(actorTemplate, "{{.namespace}}", *ns)
+	actor := strings.ReplaceAll(actorTemplate, "{{.namespace}}", *ns)
 	envs := ""
 	if *fail > 0 {
 		env1 := strings.ReplaceAll(envTemplate, "{{.envname}}", "ERR_HOSTS")
@@ -186,18 +162,18 @@ func main() {
 		env = strings.ReplaceAll(env, "{{.envvalue}}", `"*"`)
 		envs += env
 	}
-	// actor = strings.ReplaceAll(actor, "{{.envs}}", envs)
+	actor = strings.ReplaceAll(actor, "{{.envs}}", envs)
 
 	triggers := ""
 	for i := 0; i < *count; i++ {
 		tr := strings.ReplaceAll(trTemplate, "{{.namespace}}", *ns)
 		tr = strings.ReplaceAll(tr, "{{.index}}", strconv.Itoa(i))
-		if envs != "" {
-			trEnvs := "        env:\n" + envs
-			tr = strings.ReplaceAll(tr, "{{.envs}}", trEnvs)
-		} else {
-			tr = strings.ReplaceAll(tr, "{{.envs}}", "")
-		}
+		// if envs != "" {
+		// 	trEnvs := "        env:\n" + envs
+		// 	tr = strings.ReplaceAll(tr, "{{.envs}}", trEnvs)
+		// } else {
+		// 	tr = strings.ReplaceAll(tr, "{{.envs}}", "")
+		// }
 		triggers += tr
 	}
 
@@ -214,10 +190,10 @@ func main() {
 		log.Println(err)
 		os.Exit(1)
 	}
-	// if err := ioutil.WriteFile(filepath.Join(*output, "actor.yaml"), []byte(actor), 0644); err != nil {
-	// 	log.Println(err)
-	// 	os.Exit(1)
-	// }
+	if err := ioutil.WriteFile(filepath.Join(*output, "01-actor.yaml"), []byte(actor), 0644); err != nil {
+		log.Println(err)
+		os.Exit(1)
+	}
 	if err := ioutil.WriteFile(filepath.Join(*output, "02-triggers.yaml"), []byte(triggers), 0644); err != nil {
 		log.Println(err)
 		os.Exit(1)

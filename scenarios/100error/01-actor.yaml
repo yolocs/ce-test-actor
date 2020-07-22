@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: actor
+  namespace: 100-100error
+  labels:
+    app: actor
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: actor
+  template:
+    metadata:
+      labels:
+        app: actor
+    spec:
+      containers:
+      - name: actor
+        image: ko://github.com/yolocs/ce-test-actor/cmd/actor
+        ports:
+        - containerPort: 8080
+        env:
+        - name: ERR_HOSTS
+          value: "*"
+        - name: ERR_RATE
+          value: "100"
+
