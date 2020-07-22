@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: seeder
-  namespace: 500-bigsize
+  namespace: 100-health
   labels:
     app: seeder
 spec:
@@ -20,8 +20,8 @@ spec:
         image: ko://github.com/yolocs/ce-test-actor/cmd/seeder
         env:
         - name: TARGET
-          value: http://default-brokercell-ingress.cloud-run-events.svc.cluster.local/500-bigsize/testbroker
+          value: http://default-brokercell-ingress.cloud-run-events.svc.cluster.local/100-health/testbroker
         - name: INTERVAL
           value: 1s
         - name: SIZE
-          value: 2000000
+          value: 100

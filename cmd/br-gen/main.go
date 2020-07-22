@@ -193,8 +193,8 @@ func main() {
 		tr := strings.ReplaceAll(trTemplate, "{{.namespace}}", *ns)
 		tr = strings.ReplaceAll(tr, "{{.index}}", strconv.Itoa(i))
 		if envs != "" {
-			envs = "        env:\n" + envs
-			tr = strings.ReplaceAll(tr, "{{.envs}}", envs)
+			trEnvs := "        env:\n" + envs
+			tr = strings.ReplaceAll(tr, "{{.envs}}", trEnvs)
 		} else {
 			tr = strings.ReplaceAll(tr, "{{.envs}}", "")
 		}

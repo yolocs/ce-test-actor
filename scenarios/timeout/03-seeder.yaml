@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: seeder
-  namespace: 500-50error
+  namespace: 100-timeout
   labels:
     app: seeder
 spec:
@@ -20,7 +20,7 @@ spec:
         image: ko://github.com/yolocs/ce-test-actor/cmd/seeder
         env:
         - name: TARGET
-          value: http://default-brokercell-ingress.cloud-run-events.svc.cluster.local/500-50error/testbroker
+          value: http://default-brokercell-ingress.cloud-run-events.svc.cluster.local/100-timeout/testbroker
         - name: INTERVAL
           value: 1s
         - name: SIZE

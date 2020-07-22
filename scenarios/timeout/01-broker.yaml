@@ -2,6 +2,6 @@ apiVersion: eventing.knative.dev/v1beta1
 kind: Broker
 metadata:
   name: testbroker
-  namespace: 500-health
+  namespace: 100-timeout
   annotations:
     "eventing.knative.dev/broker.class": "googlecloud"
