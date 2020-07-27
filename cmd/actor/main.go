@@ -53,7 +53,7 @@ func main() {
 	}
 
 	log.Error(c.StartReceiver(context.Background(), func(e event.Event) (*event.Event, protocol.Result) {
-		log.Infof("Received event: %s", e.String())
+		// log.Infof("Received event: %s", e.String())
 		if _, ok := e.Extensions()["actorecho"]; ok {
 			return &e, protocol.ResultACK
 		}
