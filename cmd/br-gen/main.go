@@ -153,6 +153,7 @@ var (
 	size          = flag.Int64("size", 100, "The size of the event payload")
 	brClass       = flag.String("brclass", "googlecloud", "The broker class")
 	actorReplicas = flag.Int("actors", 10, "The number of actor replicas")
+	actorMaxConn  = flag.Int("max_conn", 0, "The max conns an actor pod accepts concurrently")
 )
 
 func main() {
@@ -187,6 +188,11 @@ func main() {
 	if *echo {
 		env := strings.ReplaceAll(envTemplate, "{{.envname}}", "ECHO_HOSTS")
 		env = strings.ReplaceAll(env, "{{.envvalue}}", `"*"`)
+		envs += env
+	}
+	if *actorMaxConn > 0 {
+		env := strings.ReplaceAll(envTemplate, "{{.envname}}", "MAX_CONN")
+		env = strings.ReplaceAll(env, "{{.envvalue}}", fmt.Sprintf(`"%d"`, *actorMaxConn))
 		envs += env
 	}
 	// actor = strings.ReplaceAll(actor, "{{.envs}}", envs)
