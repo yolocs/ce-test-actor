@@ -1,0 +1,23 @@
+diff --git a/pkg/reconciler/brokercell/resources/deployments.go b/pkg/reconciler/brokercell/resources/deployments.go
+index 2bbaf511..585306b9 100644
+--- a/pkg/reconciler/brokercell/resources/deployments.go
++++ b/pkg/reconciler/brokercell/resources/deployments.go
+@@ -220,6 +220,18 @@ func containerTemplate(args Args) corev1.Container {
+ 				Name:  "METRICS_DOMAIN",
+ 				Value: "knative.dev/internal/eventing",
+ 			},
++			{
++				Name:  "GCP_PROFILER",
++				Value: "true",
++			},
++			{
++				Name:  "GCP_PROFILER_PROJECT",
++				Value: "{{.PROJECT}}",
++			},
++			{
++				Name:  "GCP_PROFILER_SERVICE_VERSION",
++				Value: args.ComponentName + "-{{.PVERSION}}",
++			},
+ 		},
+ 		Ports: []corev1.ContainerPort{
+ 			{

@@ -4,18 +4,14 @@ BASEDIR=$(dirname "$0")
 KN_GCP_DIR="$GOPATH/src/github.com/google/knative-gcp"
 
 # Copy patch to knative-gcp
-cp "$BASEDIR/broker.patch" "$KN_GCP_DIR"
+cp "$BASEDIR/profile.patch" "$KN_GCP_DIR"
 
-sed "s/{{.my-test-project}}/$PROJECT/" "$BASEDIR/broker.patch" > "$KN_GCP_DIR/broker.patch"
+sed "s/{{.PROJECT}}/$PROJECT/" "$BASEDIR/profile.patch" > "$KN_GCP_DIR/profile.patch"
 
 # Change working dir
 pushd "$KN_GCP_DIR"
 
 # Apply patch
-git apply broker.patch
-
-# Update deps
-go get "cloud.google.com/go/profiler"
-./hack/update-deps.sh
+git apply profile.patch
 
 popd
