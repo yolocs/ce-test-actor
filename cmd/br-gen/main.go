@@ -197,13 +197,16 @@ func main() {
 	}
 	// actor = strings.ReplaceAll(actor, "{{.envs}}", envs)
 
-	triggers := ""
+	trigger_files := make([]string, 0)
 	for i := 0; i < *count; i++ {
+		if i%20 == 0 {
+			trigger_files = append(trigger_files, "")
+		}
 		tr := strings.ReplaceAll(trTemplate, "{{.namespace}}", *ns)
 		tr = strings.ReplaceAll(tr, "{{.index}}", strconv.Itoa(i))
 		tr = strings.ReplaceAll(tr, "{{.replicas}}", strconv.Itoa(*actorReplicas))
 		tr = strings.ReplaceAll(tr, "{{.envs}}", envs)
-		triggers += tr
+		trigger_files[len(trigger_files)-1] += tr
 	}
 
 	seeder := strings.ReplaceAll(seederTemplate, "{{.namespace}}", *ns)
@@ -223,10 +226,14 @@ func main() {
 	// 	log.Println(err)
 	// 	os.Exit(1)
 	// }
-	if err := ioutil.WriteFile(filepath.Join(*output, "02-triggers.yaml"), []byte(triggers), 0644); err != nil {
-		log.Println(err)
-		os.Exit(1)
+	for i := 0; i < len(trigger_files); i++ {
+		trigger_file_name := "02" + strconv.Itoa(i) + "-triggers.yaml"
+		if err := ioutil.WriteFile(filepath.Join(*output, trigger_file_name), []byte(trigger_files[i]), 0644); err != nil {
+			log.Println(err)
+			os.Exit(1)
+		}
 	}
+
 	if err := ioutil.WriteFile(filepath.Join(*output, "03-seeder.yaml"), []byte(seeder), 0644); err != nil {
 		log.Println(err)
 		os.Exit(1)
