@@ -89,6 +89,11 @@ spec:
       containers:
       - name: actor
         image: ko://github.com/yolocs/ce-test-actor/cmd/actor
+        resources:
+          requests:
+            memory: "400Mi"
+          limits:
+            memory: "400Mi"
         ports:
         - containerPort: 8080
         env:
@@ -121,7 +126,7 @@ metadata:
   labels:
     app: seeder
 spec:
-  replicas: 1
+  replicas: {{.replicas}}
   selector:
     matchLabels:
       app: seeder
@@ -140,20 +145,24 @@ spec:
           value: {{.interval}}
         - name: SIZE
           value: "{{.size}}"
+        - name: CONCURRENCY
+          value: "{{.concurrency}}"
 `
 
 var (
-	output        = flag.String("output", "", "Output path")
-	ns            = flag.String("ns", "default", "Namesapce")
-	count         = flag.Int("count", 100, "The number of triggers to create")
-	echo          = flag.Bool("echo", false, "Echo all requests")
-	fail          = flag.Int("fail", 0, "Fail requests with the given error rate")
-	slow          = flag.String("slow", "", "Delay for all requests")
-	seedInternal  = flag.String("interval", "1s", "Seed interval")
-	size          = flag.Int64("size", 100, "The size of the event payload")
-	brClass       = flag.String("brclass", "googlecloud", "The broker class")
-	actorReplicas = flag.Int("actors", 10, "The number of actor replicas")
-	actorMaxConn  = flag.Int("max_conn", 0, "The max conns an actor pod accepts concurrently")
+	output         = flag.String("output", "", "Output path")
+	ns             = flag.String("ns", "default", "Namesapce")
+	count          = flag.Int("count", 100, "The number of triggers to create")
+	echo           = flag.Bool("echo", false, "Echo all requests")
+	fail           = flag.Int("fail", 0, "Fail requests with the given error rate")
+	slow           = flag.String("slow", "", "Delay for all requests")
+	seedInternal   = flag.String("interval", "1s", "Seed interval")
+	size           = flag.Int64("size", 100, "The size of the event payload")
+	brClass        = flag.String("brclass", "googlecloud", "The broker class")
+	actorReplicas  = flag.Int("actors", 10, "The number of actor replicas")
+	actorMaxConn   = flag.Int("max_conn", 0, "The max conns an actor pod accepts concurrently")
+	seederReplicas = flag.Int("seeders", 2, "The number of seeder replicas")
+	seederConn     = flag.Int("seeders_conn", 1, "The seeder concurrency")
 )
 
 func main() {
@@ -209,6 +218,8 @@ func main() {
 	seeder := strings.ReplaceAll(seederTemplate, "{{.namespace}}", *ns)
 	seeder = strings.ReplaceAll(seeder, "{{.interval}}", *seedInternal)
 	seeder = strings.ReplaceAll(seeder, "{{.size}}", fmt.Sprintf("%d", *size))
+	seeder = strings.ReplaceAll(seeder, "{{.replicas}}", strconv.Itoa(*seederReplicas))
+	seeder = strings.ReplaceAll(seeder, "{{.concurrency}}", fmt.Sprintf("%d", *seederConn))
 
 	if err := ioutil.WriteFile(filepath.Join(*output, "00-namespace.yaml"), []byte(namespace), 0644); err != nil {
 		log.Println(err)
